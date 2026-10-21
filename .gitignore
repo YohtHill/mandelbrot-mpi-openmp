@@ -1,0 +1,15 @@
+mandelbrot_serial
+mandelbrot_dynamic
+mandelbrot_static
+out/
+*.ppm
+*.o
+.DS_Store
+# step-by-step tutorial binaries
+steps/hello_mpi
+steps/mpi_rows
+steps/mandelbrot_serial
+steps/mandelbrot_mpi
+steps/mandelbrot_mpi_omp_static
+steps/mandelbrot_mpi_omp_dynamic
+steps/*.ppm
