@@ -555,15 +555,19 @@ strict check.
 │   ├── mandelbrot_serial.c
 │   ├── mandelbrot_mpi_omp.c
 │   └── mandelbrot_mpi_omp_static.c
-└── steps/
-    ├── README.md
-    ├── Makefile
-    ├── hello_mpi.c
-    ├── mpi_rows.c
-    ├── mandelbrot_serial.c
-    ├── mandelbrot_mpi.c
-    ├── mandelbrot_mpi_omp_static.c
-    └── mandelbrot_mpi_omp_dynamic.c
+├── steps/
+│   ├── README.md
+│   ├── Makefile
+│   ├── hello_mpi.c
+│   ├── mpi_rows.c
+│   ├── mandelbrot_serial.c
+│   ├── mandelbrot_mpi.c
+│   ├── mandelbrot_mpi_omp_static.c
+│   └── mandelbrot_mpi_omp_dynamic.c
+└── lab9_amd/
+    ├── Lab9_Mandelbrot_AMD_ROCm.ipynb
+    ├── Lab9_Mandelbrot_AMD_ROCm_ZH.ipynb
+    └── README.md
 ```
 
 - `mandelbrot_serial.c`: serial reference.
@@ -574,6 +578,8 @@ strict check.
   row partition, serial renderer, pure MPI, static hybrid and dynamic hybrid.
   See [`steps/README.md`](steps/README.md) for the step-by-step commands.
 - `README.zh-CN.md`: Chinese translation of this document.
+- `lab9_amd/`: Jupyter notebook for running the C project and a PyTorch ROCm
+  GPU port on the AMD cluster.
 
 ## 13. Reproduce from scratch
 
@@ -602,5 +608,21 @@ The final hashes should all match the digest above.
 
 ## 15. Report
 
-The full laboratory report is submitted separately and is not included in this
-repository.
+The full laboratory report is submitted separately and is not stored in this
+public repository because it contains personal information.
+
+## 16. AMD ROCm notebook
+
+The `lab9_amd/` directory contains a self-contained notebook for the AMD ROCm
+cluster. It checks the environment, runs the C serial/static/dynamic programs
+when `mpicc` and `mpirun` are available, then ports the same Mandelbrot
+algorithm to PyTorch ROCm on the AMD GPU.
+
+- [English notebook](lab9_amd/Lab9_Mandelbrot_AMD_ROCm.ipynb)
+- [Chinese notebook](lab9_amd/Lab9_Mandelbrot_AMD_ROCm_ZH.ipynb)
+- [Instructions](lab9_amd/README.md)
+
+The notebook compares the AMD container with the original four-vCPU VM numbers
+(serial 0.725 s, dynamic 2x2 0.1833 s). The cross-environment ratio is only a
+reference; the controlled comparison is C serial vs C MPI+OpenMP vs GPU inside
+the AMD container.
