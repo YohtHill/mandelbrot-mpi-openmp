@@ -39,6 +39,11 @@ uname -m
 
 If `mpicc` or `mpirun` is missing, use one of these options.
 
+Some Jupyter containers block `sudo` with a `no new privileges` flag. In that
+case the apt option cannot work; use conda or micromamba instead. The notebook
+automatically looks for `conda`/`mamba`/`micromamba`, including common paths
+such as `/opt/conda/bin/conda`.
+
 ### Option A: system packages (sudo)
 
 ```bash
