@@ -23,6 +23,50 @@ Mandelbrot project on the AMD ROCm cluster.
    reported only as a reference; the controlled comparison is inside the
    AMD container.
 
+## If MPI or OpenMP is missing
+
+The AMD container may not include the C/MPI toolchain. Check:
+
+```bash
+which gcc mpicc mpirun
+uname -m
+```
+
+If `mpicc` or `mpirun` is missing, use one of these options.
+
+### Option A: system packages (sudo)
+
+```bash
+sudo apt-get update
+sudo apt-get install -y build-essential libopenmpi-dev openmpi-bin
+```
+
+- `build-essential`: GCC and the OpenMP runtime (`libgomp`)
+- `libopenmpi-dev`: `mpicc` and MPI headers
+- `openmpi-bin`: `mpirun`
+
+### Option B: conda / micromamba (no sudo)
+
+```bash
+conda install -y -c conda-forge openmpi gcc_linux-64 gxx_linux-64
+```
+
+For an ARM container (`aarch64`), use `gcc_linux-aarch64` and
+`gxx_linux-aarch64`.
+
+### Verify
+
+```bash
+mpicc --version
+mpirun --version
+mpirun -np 2 hostname
+```
+
+Then restart the Jupyter kernel and run the notebook from the first cell.
+
+OpenMP itself is part of GCC; there is no separate OpenMP package to install.
+The compile flag is `-fopenmp`, and the runtime is normally `libgomp`.
+
 ## How to run
 
 1. Upload `Lab9_Mandelbrot_AMD_ROCm.ipynb` to the JupyterLab environment
