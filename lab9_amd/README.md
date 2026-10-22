@@ -25,7 +25,12 @@ Mandelbrot project on the AMD ROCm cluster.
 
 ## If MPI or OpenMP is missing
 
-The AMD container may not include the C/MPI toolchain. Check:
+The AMD container may not include the C/MPI toolchain. The notebook now has
+an automatic install cell; it tries `apt-get` first (root or passwordless
+`sudo`) and then conda-forge. If the container does not allow either method,
+the cell prints the commands below.
+
+Check manually:
 
 ```bash
 which gcc mpicc mpirun
