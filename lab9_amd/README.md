@@ -7,6 +7,8 @@ Mandelbrot project on the AMD ROCm cluster.
 
 - `Lab9_Mandelbrot_AMD_ROCm.ipynb` — fully English notebook (recommended for submission).
 - `Lab9_Mandelbrot_AMD_ROCm_ZH.ipynb` — Chinese version of the same notebook.
+- `Lab9_AMD_ROCm_Supplementary_Report.pdf` — supplementary report (PDF).
+- `Lab9_AMD_ROCm_Supplementary_Report.docx` — supplementary report (editable Word).
 
 ## What the notebook does
 
@@ -98,6 +100,21 @@ lab9_amd_work/
 ├── gpu_mandelbrot.png
 └── results.json
 ```
+
+## Supplementary report
+
+The report records:
+
+- C serial 0.2570 s and PyTorch ROCm GPU 0.18985 s (mean of three runs);
+- GPU vs C serial: 1.35x;
+- no AMD static/dynamic 2x2 rows, because `mpicc`/`mpirun` were missing and `sudo` was blocked;
+- the first-run pixel difference (345,928 / 480,000), traced to the C palette's
+  unclamped negative channel values and to endpoint sampling in the first GPU
+  grid. The notebook now uses pixel-centre sampling; the report documents the
+  C palette patch needed for a strict hash comparison.
+
+- [Supplementary report PDF](Lab9_AMD_ROCm_Supplementary_Report.pdf)
+- [Supplementary report DOCX](Lab9_AMD_ROCm_Supplementary_Report.docx)
 
 ## Notes
 

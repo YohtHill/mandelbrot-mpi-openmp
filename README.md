@@ -620,6 +620,8 @@ algorithm to PyTorch ROCm on the AMD GPU.
 
 - [English notebook](lab9_amd/Lab9_Mandelbrot_AMD_ROCm.ipynb)
 - [Chinese notebook](lab9_amd/Lab9_Mandelbrot_AMD_ROCm_ZH.ipynb)
+- [Supplementary report PDF](lab9_amd/Lab9_AMD_ROCm_Supplementary_Report.pdf)
+- [Supplementary report DOCX](lab9_amd/Lab9_AMD_ROCm_Supplementary_Report.docx)
 - [Instructions](lab9_amd/README.md)
 
 The notebook compares the AMD container with the original four-vCPU VM numbers
